@@ -22,7 +22,7 @@ class PagesController < ApplicationController
   end
 
   def show
-  	@page = current_user.pages.find_by(id: params[:id])
+  	@page = Page.find_by(id: params[:id])
   end
 
   def edit
