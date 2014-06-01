@@ -1,5 +1,6 @@
 - provide(:title, @page)
 %h3
-	Edit post 
--if current_user?(@page.user)
+	Edit page 
+-if current_user?(@page.user) || (signed_in? && 
+	(@page.title = "Home" || @page.title = "About"))
 	= render '/shared/create_page_form'

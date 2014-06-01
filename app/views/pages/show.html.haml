@@ -1,20 +1,4 @@
 - provide(:title, @page)
-%div#post
-
-	%h3
-		!~ kramdown @page.title
-	%span.content
-		!~ kramdown @page.content
-	%span.timestamp
-		:erb
-			Posted <%= time_ago_in_words(@page.created_at) %> ago 
-	%span.user
-		by
-		= link_to @page.user.name, @page.user
-	%ul.pull-right
-		- if current_user?(@page.user)
-			= link_to "edit", edit_page_path(@page)
-			|
-			= link_to "delete", @page, method: :delete, data: { confirm: "You sure?" }, title: @page.content
-			|
-		= link_to 'permalink', page_url(@page)				
+.row
+	.span8
+		= render partial: 'shared/feed_item', object: @page	

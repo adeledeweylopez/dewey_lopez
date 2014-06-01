@@ -1,7 +1,7 @@
 = form_for(@page) do |f|
 	= render 'shared/error_messages', object: f.object
 	.field
-		= f.text_area :title,	placeholder: "Title"
+		= f.text_field :title,	placeholder: "Title"
 		= f.text_area :content, placeholder: "Write a new post..."
 		Sequence?
 		= f.check_box :sequence

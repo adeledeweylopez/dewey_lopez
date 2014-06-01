@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   	before_action :signed_in_user, 	only: [:create, :destroy]
-	before_action :correct_user, 	only: [:edit, :destroy]
+	  before_action :correct_user, 	only: [:edit, :destroy, :update]
 
 	def new
   		@page= Page.new
@@ -26,12 +26,12 @@ class PagesController < ApplicationController
   end
 
   def edit
-  	@page = current_user.pages.find_by(id: params[:id])
+  	@page = Page.find_by(id: params[:id])
   
   end
 
   def update
-  	@page = current_user.pages.find_by(id: params[:id])
+  	@page = Page.find_by(id: params[:id])
 		if @page.update_attributes(page_params)
 			flash[:success] = "Post updated"
 			redirect_to @page 
@@ -48,7 +48,14 @@ class PagesController < ApplicationController
     end
 
     def correct_user
-      @page = current_user.pages.find_by(id: params[:id])
+      # All users can edit the home and about pages
+      if Page.find_by(id: params[:id]).title == "Home"
+        @page = Page.find_by(title: "Home")
+      elsif Page.find_by(id: params[:id]).title == "About"
+        @page = Page.find_by(title: "About")
+      else        
+        @page = current_user.pages.find_by(id: params[:id])
+      end
       redirect_to user_url(current_user) if @page.nil?
     end
 end
