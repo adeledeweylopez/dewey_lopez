@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		if signed_in?
 			@page = current_user.pages.build 
-			@feed_items = current_user.feed.paginate(page: params[:page])
+			@feed_items = @user.feed.paginate(page: params[:page])
 		end
 	end
 
