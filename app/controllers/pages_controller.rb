@@ -27,6 +27,7 @@ class PagesController < ApplicationController
 
   def edit
   	@page = current_user.pages.find_by(id: params[:id])
+  
   end
 
   def update
@@ -43,7 +44,7 @@ class PagesController < ApplicationController
   private
 
     def page_params
-      params.require(:page).permit(:title, :content)
+      params.require(:page).permit(:title, :content, :sequence, :public)
     end
 
     def correct_user

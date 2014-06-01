@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 	end
 
 	def feed
-		Page.where("user_id = ?", id)
+		Page.where("user_id = ? AND sequence = ?", id, false)
 	end
 
 	private

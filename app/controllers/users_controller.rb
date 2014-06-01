@@ -12,7 +12,12 @@ class UsersController < ApplicationController
  	def show
 		@user = User.find(params[:id])
 		@page = current_user.pages.build if signed_in?
-		@feed_items = @user.feed.paginate(page: params[:page])
+		if current_user?(@user)
+			@feed_items = @user.feed.paginate(page: params[:page])
+		else
+			@feed_items = @user.feed.where("public = ?", 
+				true).paginate(page: params[:page])
+		end
 	end
 
  	 def new
@@ -60,7 +65,7 @@ class UsersController < ApplicationController
 											:password_confirmation)
 		end
 
-		# Before filtersz
+		# Before filters
 
 		def signed_out_user
 			unless !signed_in?

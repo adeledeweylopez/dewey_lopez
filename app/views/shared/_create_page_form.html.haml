@@ -3,4 +3,8 @@
 	.field
 		= f.text_area :title,	placeholder: "Title"
 		= f.text_area :content, placeholder: "Write a new post..."
+		Sequence?
+		= f.check_box :sequence
+		Public?
+		= f.check_box :public
 	= f.submit "Post", class: "btn btn-large btn-primary"

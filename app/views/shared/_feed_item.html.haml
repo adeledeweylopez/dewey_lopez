@@ -14,7 +14,7 @@
 		- if current_user?(feed_item.user)
 			= link_to "edit", edit_page_path(feed_item)
 			|
-			= link_to "delete", feed_item, method: :delete, data: { confirm: "Yousure?" }, title: feed_item.title
+			= link_to "delete", feed_item, method: :delete, data: { confirm: "You sure?" }, title: feed_item.title
 			|
 		= link_to 'permalink', page_url(feed_item)
 				
