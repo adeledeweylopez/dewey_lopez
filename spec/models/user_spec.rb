@@ -14,6 +14,9 @@ describe User do
 	it { should respond_to(:remember_token) }
 	it { should respond_to(:authenticate) }
 	it { should respond_to(:admin) }
+	it { should respond_to(:pages) }	
+	it { should respond_to(:feed) }	
+
 
 	it { should be_valid }
 	it { should_not be_admin }
@@ -121,4 +124,26 @@ describe User do
     	before { @user.save }
     	its(:remember_token) { should_not be_blank }
 	end
+
+	describe "page associations" do
+
+	    before { @user.save }
+	    let!(:older_page) do
+	      FactoryGirl.create(:page, user: @user, created_at: 1.day.ago)
+	    end
+	    let!(:newer_page) do
+	      FactoryGirl.create(:page, user: @user, created_at: 1.hour.ago)
+	    end
+
+	    it "should have the right pages in the right order" do
+	      expect(@user.pages.to_a).to eq [newer_page, older_page]
+	    end
+
+	    describe "feed" do
+
+	      its(:feed) { should include(newer_page) }
+	      its(:feed) { should include(older_page) }
+	      
+	    end
+  	end
 end

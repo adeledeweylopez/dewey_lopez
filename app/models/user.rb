@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_many :pages
 	before_save { email.downcase! }
 	before_create :create_remember_token
 	validates :name, 	presence: true, length: { maximum: 50 }
@@ -16,6 +17,10 @@ class User < ActiveRecord::Base
 
 	def User.digest(token)
 		Digest::SHA1.hexdigest(token.to_s)
+	end
+
+	def feed
+		Page.where("user_id = ?", id)
 	end
 
 	private

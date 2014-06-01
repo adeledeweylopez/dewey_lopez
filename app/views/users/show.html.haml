@@ -1,7 +1,13 @@
 - provide(:title, @user.name)
-.row
-	%aside
-		%section
-			%h1
-				= gravatar_for @user
-				= @user.name
+
+.container
+	.row
+		%aside
+			%section
+				%h1
+					= gravatar_for @user
+					= @user.name
+				
+		- if signed_in?
+			.span7
+				= render 'shared/feed'

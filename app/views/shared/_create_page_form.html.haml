@@ -1,0 +1,6 @@
+= form_for(@page) do |f|
+	= render 'shared/error_messages', object: f.object
+	.field
+		= f.text_area :title,	placeholder: "Title"
+		= f.text_area :content, placeholder: "Write a new post..."
+	= f.submit "Post", class: "btn btn-large btn-primary"

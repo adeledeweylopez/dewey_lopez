@@ -1,0 +1,20 @@
+%li{id: feed_item.id}
+	%h3
+		!~ kramdown feed_item.title
+	%span.content
+		!~ kramdown feed_item.content
+	
+	%span.timestamp
+		:erb
+			Posted <%= time_ago_in_words(feed_item.created_at) %> ago 
+	%span.user
+		by
+		= link_to feed_item.user.name, feed_item.user
+	%ul.pull-right
+		- if current_user?(feed_item.user)
+			= link_to "edit", edit_page_path(feed_item)
+			|
+			= link_to "delete", feed_item, method: :delete, data: { confirm: "Yousure?" }, title: feed_item.content
+			|
+		= link_to 'permalink', page_url(feed_item)
+				

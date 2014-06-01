@@ -1,4 +1,6 @@
+
 @import "bootstrap";
+@import "bootstrap-responsive";
 
 /* mixins, variables, etc... */
 
@@ -8,6 +10,12 @@ $grayMediumLight: #eaeaea;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
 }
 
 /* universal */
@@ -30,10 +38,10 @@ textarea {resize: vertical;}
 h1, h2, h3, h4, h5, h6 {line-height: 1;}
 
 h1 {
-	font-size: 3em;
+	font-size: 2.2em;
 	letter-spacing: -2px;
 	margin-bottom: 30px;
-	text-align: center;
+//	text-align: center;
 }
 
 h2 {
@@ -194,9 +202,9 @@ input {
 	}
 }
 
-/* microposts */
+/* pages */
 
-.microposts {
+.pages {
 	list-style: none;
 	margin: 10px 0 0 0;
 

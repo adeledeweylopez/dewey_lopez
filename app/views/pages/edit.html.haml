@@ -1,0 +1,4 @@
+- provide(:title, @page)
+- if signed_in? 
+	-if current_user==@page.user
+		= render '/shared/create_page_form'

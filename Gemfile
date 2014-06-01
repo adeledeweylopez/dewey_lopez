@@ -4,7 +4,7 @@ ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
-gem 'bootstrap-sass', '2.3.2.0'
+gem 'bootstrap-sass', '3.1.1.1'
 gem 'sprockets', '2.11.0'
 gem 'haml', '4.0.5'
 gem 'pg', '0.15.1'
