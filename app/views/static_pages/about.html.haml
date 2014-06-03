@@ -1,11 +1,13 @@
 - provide(:title, 'About')
 - about = Page.find_by(title: "About")
-- if about
-	%span.content
-		!~ kramdown about.content
-	%ul.pull-right
-		= link_to "edit", edit_page_path(about)
-- else
-	%h1 About
-	%p
-		This website was created with Ruby on Rails. It also uses kramdown, a variant of markdown that supports LaTeX, among other things. 
+.row
+	.col-md-8
+		- if about
+			%span.content
+				!~ kramdown about.content
+			%ul.pull-right
+				= link_to "edit", edit_page_path(about)
+		- else
+			%h1 About
+			%p
+				This website was created with Ruby on Rails. It also uses kramdown, a variant of markdown that supports LaTeX, among other things. 

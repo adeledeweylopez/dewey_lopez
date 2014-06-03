@@ -1,6 +1,8 @@
 - provide(:title, @page)
-%h3
-	Edit page 
--if current_user?(@page.user) || (signed_in? && 
-	(@page.title = "Home" || @page.title = "About"))
-	= render '/shared/create_page_form'
+
+.row
+	.col-md-10
+		%h2
+			Edit page 
+		-if current_user?(@page.user) || (signed_in? && (@page.title = "Home" || @page.title = "About"))
+			= render '/shared/create_page_form'

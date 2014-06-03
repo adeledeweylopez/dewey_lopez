@@ -4,7 +4,7 @@ ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
-gem 'bootstrap-sass', '3.1.1.1'
+gem 'bootstrap-sass', '3.1.1'
 gem 'sprockets', '2.11.0'
 gem 'haml', '4.0.5'
 gem 'pg', '0.15.1'
@@ -16,6 +16,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem 'kramdown', '1.3.3'
 gem 'mathjax-rails', '2.3.0'
 gem 'coderay', '1.1.0'
+gem 'flat-ui-rails', '0.0.2'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do

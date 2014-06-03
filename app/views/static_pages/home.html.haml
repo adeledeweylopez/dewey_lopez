@@ -1,11 +1,14 @@
 - provide(:title, 'Home')
 - home = Page.find_by(title: "Home")
-- if home
-	%span.content
-		!~ kramdown home.content
-	%ul.pull-right
-		= link_to "edit", edit_page_path(home)
-- else
-	%h1 Alex and Adele
-	%p
-		Welcome to the Dewey-Lopez's website!
+
+.row
+	.col-md-8
+		- if home
+			%span.content
+				!~ kramdown home.content
+			%ul.pull-right
+				= link_to "edit", edit_page_path(home)
+		- else
+			%h1 Alex and Adele
+			%p
+				Welcome to the Dewey-Lopez's website!

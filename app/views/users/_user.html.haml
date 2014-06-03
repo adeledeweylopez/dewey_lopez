@@ -1,6 +1,9 @@
+
 %li
-	= gravatar_for user, size: 52
-	= link_to user.name, user
-	- if current_user.admin? && !current_user?(user) 
-		|
-		= link_to "delete", user, method: :delete, data: { confirm: "You sure?" }
+	= gravatar_for user, size: 60
+	%h3
+		-#= link_to user.name, user	
+		- blog_name = "#{user.name[/(\S+(\s+)?){,#{1}}/].strip}'s blog"
+		= link_to blog_name, blog_url(user)
+		
+	

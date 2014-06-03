@@ -1,19 +1,18 @@
 - provide(:title, @user.name)
 
-
-.row
-	
-	.span8
-		%h1
-			:erb
-				<%= @user.name[/(\S+(\s+)?){,#{1}}/].strip%>'s blog
-		= render 'shared/feed'
-	%aside
-		%section
-			%h1
-				= gravatar_for @user
-				= @user.name
-				- if current_user?(@user)
-					.btn
-						= link_to "Create new post", new_page_path(@user)
-
+- user_profile = Page.find_by(title: @user.name)
+- if user_profile
+	%span.content
+		!~ kramdown user_profile.content
+	%ul.pull-right
+		- if current_user?(user_profile.user)
+			
+			= link_to "edit", edit_page_path(user_profile)
+		- if current_user
+			- if current_user.admin? && !current_user?(user) 
+				|
+				= link_to "delete", user, method: :delete, data: { confirm: "You sure?" }
+- else
+	%h1= @user.name
+	%p
+		Default profile page - personalize by creating a new post with your name as the title. 

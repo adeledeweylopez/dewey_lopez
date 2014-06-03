@@ -1,7 +1,9 @@
 DeweyLopez::Application.routes.draw do
   resources :users
+    resources :pages
+
   resources :sessions, only: [:new, :create, :destroy]
-  resources :pages
+  
   root 'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
@@ -9,6 +11,7 @@ DeweyLopez::Application.routes.draw do
   match '/about',       to: 'static_pages#about',   via: 'get'
   get "static_pages/home"
   get "static_pages/about"
+  get 'users/:id/blog' => 'users#blog', as: :blog
   mathjax 'mathjax'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

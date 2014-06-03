@@ -1,10 +1,17 @@
-= form_for(@page) do |f|
+= form_for(@page, class: "form-horizontal") do |f|
 	= render 'shared/error_messages', object: f.object
 	.field
-		= f.text_field :title,	placeholder: "Title"
-		= f.text_area :content, placeholder: "Write a new post..."
-		Sequence?
-		= f.check_box :sequence
-		Public?
-		= f.check_box :public
-	= f.submit "Post", class: "btn btn-large btn-primary"
+		.form-group
+			-#= f.label :title, "Title"
+			= f.text_field :title,	placeholder: "Title", class: "form-control"
+		.form-group
+			= f.text_area :content, placeholder: "Write a new post...", class: "form-control", rows: 20
+		.form-group
+			= f.submit "Submit", class: "btn btn-large btn-primary"
+			.pull-right
+				.checkbox-inline
+					:erb
+						<%= f.check_box :sequence%> Sequence
+				.checkbox-inline
+					:erb		
+						<%= f.check_box :public%> Public

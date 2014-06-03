@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :signed_in_user, 	
-					only: [:index, :edit, :update, :destroy]
+					only: [:edit, :update, :destroy]
 	before_action :signed_out_user, only: [:new, :create]
 	before_action :correct_user,	only: [:edit, :update]
 	before_action :admin_user,		only: :destroy
@@ -10,6 +10,10 @@ class UsersController < ApplicationController
 	end
 
  	def show
+		@user = User.find(params[:id])
+	end
+
+	def blog
 		@user = User.find(params[:id])
 		@page = current_user.pages.build if signed_in?
 		if current_user?(@user)

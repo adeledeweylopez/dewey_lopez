@@ -1,8 +1,8 @@
 - provide(:title, "Edit user")
-%h1 Update your profile
+%h2 Update your profile
 
 .row
-	.span6.offset3
+	.col-md-7
 		= form_for(@user) do |f|
 			= render 'shared/error_messages', object: f.object
 
@@ -10,6 +10,6 @@
 
 			= f.submit "Save changes", class: "btn btn-large btn-primary"
 
-		= gravatar_for @user
-		= link_to "http://gravatar.com/emails", :target => "_blank" do
-			change
+		-#= gravatar_for @user
+		=#= link_to "http://gravatar.com/emails", :target => "_blank" do 
+		-#change

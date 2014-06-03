@@ -1,9 +1,12 @@
-- provide(:title, 'All users')
-%h1 All users
+- provide(:title, 'User blogs')
 
-= will_paginate
+.row
+	.col-md-5
+		%h2 User blogs
 
-%ul.users
-	= render @users
+		= will_paginate
 
-= will_paginate
+		%ul.users
+			= render @users
+
+		= will_paginate
