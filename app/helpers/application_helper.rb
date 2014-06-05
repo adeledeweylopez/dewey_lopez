@@ -9,7 +9,7 @@ module ApplicationHelper
     end
   end
 
-  	def kramdown(text)
+  def kramdown(text)
 		return Kramdown::Document.new(text, coderay_line_numbers: :table).to_html
  	end
 end

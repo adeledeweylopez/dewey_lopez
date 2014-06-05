@@ -21,6 +21,8 @@ $violet			: #41157f;
 $purple			: #6633ae;
 $lavender		: #9365d3;
 $light-lavender	: #d3baf7;
+$black			: #333333;
+$peaceful-blue	: #428bca;
 
 a {
 //	color: $violet;
@@ -183,12 +185,13 @@ h3 {
 p {
 	font-size: 1.1em;
 	line-height: 1.7em;
-	margin-bottom: -3px;
+	margin-top: 1px;
+	
 }
 
-.MathJax {
-	margin-top: 3px;
-}
+// .math {
+// 	padding-top: 50px;
+// }
 
 // /* header */
 
@@ -229,6 +232,9 @@ p {
 
 footer {
 	margin-top: 20px;
+//	margin-left: 20px;
+//	margin-right: 20px;
+//	margin-bottom: 20px;
 	padding-top: 5px;
 	border-top: 1px solid $grayMediumLight;
 	color: $gray-light;
@@ -290,7 +296,7 @@ aside {
 	border: none;
 	background-color: $hot-pink;
 	color: $white;
-	font-size: 1.12em;
+	font-size: 1em;
 //	margin-top: 10px;
 	a {
 		color: #fff;
@@ -309,7 +315,7 @@ aside {
 
 
 .checkbox-inline {
-	font-size: 1.12em;
+	font-size: 1em;
 }
 
 .side-button {
@@ -317,6 +323,38 @@ aside {
 	margin-top: 10px;
 }
 
+.subtle-link {
+	color: $black;
+}
+
+.comment {
+	a{
+		font-weight: bold;
+		color: $violet;
+	}
+	margin-top: 10px;
+	margin-bottom: 10px;
+//	border: solid 1px #dddddd;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	
+}
+
+.score {
+	color: $hot-light-pink;
+	padding-left: 4px;
+}
+
+.reply > a {
+	font-weight: normal;
+	color: $peaceful-blue;
+}
+
+.parent {
+	font-style: italic;
+	color: $purple
+}
 
 // .user_avatars {
 // 	overflow: auto;
@@ -378,14 +416,15 @@ aside {
 // 	}
 // }
 
-// .content {
-// 	display: block;
-// 	overflow: hidden;
-// }
+.content {
+//	display: block;
+	overflow: hidden;
+	padding-bottom: 3px;
+}
 
-// .timestamp {
-// 	color: $gray-light;
-// }
+.timestamp {
+	color: $gray-light;
+}
 
 // .gravatar {
 // 	float: left;
@@ -393,6 +432,7 @@ aside {
 // }
 
 pre {
+		margin-top: 3px;
         border:1px dashed #E1E1E1;
         color:#333344;
         background:#FAFAFA;

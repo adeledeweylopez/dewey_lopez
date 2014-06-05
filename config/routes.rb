@@ -3,6 +3,8 @@ DeweyLopez::Application.routes.draw do
     resources :pages
 
   resources :sessions, only: [:new, :create, :destroy]
+
+  resources :comments
   
   root 'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'

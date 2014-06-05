@@ -1,6 +1,7 @@
 %ui{id: feed_item.id}
 	%h3
-		!~ kramdown feed_item.title
+		%a.subtle-link{href: page_url(feed_item)}
+			!~ kramdown feed_item.title
 	%span.content
 		!~ kramdown feed_item.content
 	

@@ -10,9 +10,10 @@ class PagesController < ApplicationController
     	@page = current_user.pages.build(page_params)
     	if @page.save
       		flash[:success] = "Post created!"
-      		redirect_to user_url(current_user)
+      		redirect_to blog_url(current_user)
     	else
-      		render 'show'
+          flash[:error] = "Can't be blank"
+      		redirect_to blog_url(current_user)
     	end
   	end
 
@@ -23,6 +24,11 @@ class PagesController < ApplicationController
 
   def show
   	@page = Page.find_by(id: params[:id])
+    @new_comment = @page.comments.build
+    # Need to reload the @page variable, otherwise a weird error shows up
+    @page = Page.find_by(id: params[:id])
+    @indentation = 0 
+    @comments = @page.comments.where("parent_id = ?", 0)
   end
 
   def edit

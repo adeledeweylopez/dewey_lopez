@@ -1,0 +1,17 @@
+- formatting = Page.find_by(title: "Formatting help")
+.modal.fade#formatting_help(tabindex = "-1" role = "dialog" aria-labelledby = "formatting_help_screen" aria-hidden="true")
+	.modal-dialog
+		.modal-content
+			.modal-header
+				%button.close(type = "button" data-dismiss = "modal" aria-hidden="true") &times;
+
+				%h4 Formatting Help
+			.modal-body
+				- if formatting
+					!~ kramdown formatting.content
+				- else
+					:markdown
+						Uses [kramdown](http://kramdown.gettalong.org/syntax.html), a super-set of markdown. 
+			.modal-footer
+				%button.btn.pull-left(type = "button" data-dismiss = "modal") Close
+

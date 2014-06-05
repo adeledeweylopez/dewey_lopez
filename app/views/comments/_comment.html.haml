@@ -1,0 +1,32 @@
+- @max_level = 4
+- @display_level = comment.level.to_i < @max_level ? comment.level : @max_level
+%div{ :class => "col-md-8 col-md-offset-#{@display_level}" }
+	.comment
+		%a
+			= comment.name	
+		
+		%span.score
+			13 points
+		%span.parent.pull-right
+			- if comment.parent_id != 0
+				- @parent = Comment.find_by(id: comment.parent_id)
+				- if @parent.level >= @max_level
+					Reply to
+					= @parent.name
+		%span.content
+			!~ kramdown comment.content
+		%span.timestamp
+			:erb 		
+				Posted <%= time_ago_in_words(comment.created_at) %> ago
+			%span.reply.pull-right
+				%a{:href => "#reply-to-#{comment.id}"}(data-toggle="collapse")
+					reply
+
+	.panel-collapse.collapse{:id => "reply-to-#{comment.id}"}
+		.panel-body
+			- @indentation = comment.level + 1
+			- @parent_id = comment.id
+			= render partial: 'shared/comment_form', object: @new_comment
+
+
+= render @page.comments.where("parent_id = ?", comment.id)

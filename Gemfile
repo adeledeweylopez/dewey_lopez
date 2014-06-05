@@ -10,13 +10,12 @@ gem 'haml', '4.0.5'
 gem 'pg', '0.15.1'
 gem 'redcarpet', '3.1.1'
 gem 'bcrypt-ruby', '3.1.2'
-gem 'faker', '1.1.2'
+
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'kramdown', '1.3.3'
 gem 'mathjax-rails', '2.3.0'
 gem 'coderay', '1.1.0'
-gem 'flat-ui-rails', '0.0.2'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
@@ -25,6 +24,7 @@ group :development, :test do
 	gem 'spork-rails', '4.0.0'
 	gem 'guard-spork', '1.5.0'
 	gem 'childprocess', '0.3.6'
+	gem 'faker', '1.1.2'
 end
 
 group :test do

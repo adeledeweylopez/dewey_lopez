@@ -2,3 +2,11 @@
 .row
 	.col-md-8
 		= render partial: 'shared/feed_item', object: @page	
+		- @parent_id = 0
+		= render partial: 'shared/comment_form', object: @new_comment
+.row
+	
+	- if @comments.any?
+		%h3 Comments
+		.comments
+			= render @comments

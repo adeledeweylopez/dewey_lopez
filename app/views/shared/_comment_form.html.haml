@@ -1,0 +1,21 @@
+= form_for(@new_comment) do |f|
+	= render 'shared/error_messages', object: f.object
+	.field
+		.form-group
+			= f.text_field :name,	placeholder: "Name", class: "form-control"
+		.form-group
+			= f.text_field :email,	placeholder: "Email (optional)", class: "form-control"
+		.form-group
+			= f.text_field :website,placeholder: "Website", class: "form-control"
+		.form-group
+			= f.text_area	:content, placeholder: "Write a comment...", class: "form-control", rows: 7
+			= f.hidden_field :page_id, value: @page.id
+			= f.hidden_field :level, value: @indentation
+			= f.hidden_field :parent_id, value: @parent_id
+		.form-group
+			= f.submit "Comment", class: "btn btn-large btn-primary"
+			%button.btn(type = "button" data-toggle="modal" data-target="#formatting_help")
+				Formatting help
+
+
+= render 'shared/formatting_help'
