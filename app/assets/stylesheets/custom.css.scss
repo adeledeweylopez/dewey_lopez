@@ -218,7 +218,6 @@ form {
 	background-color: $hot-pink;
 	color: $white;
 	line-height: 17px;
-//	font-size: 1em;
 	a {
 		color: #fff;
 		&:hover {
@@ -228,6 +227,9 @@ form {
 	&:hover {
 		color: #fff;
 			background-color: $hot-light-pink;
+	}
+	&:active {
+		background-color: $lavender;
 	}
 }
 

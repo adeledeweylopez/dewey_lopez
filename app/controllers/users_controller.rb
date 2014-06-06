@@ -10,6 +10,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:user_alias])
+    if @user.nil?
+    	redirect_to root_url
+    end
   end
 
   def blog
@@ -56,7 +59,9 @@ class UsersController < ApplicationController
   def destroy
   	# TODO: Fix messaging system.
     @user = User.find(params[:user_alias])
-    if current_user?(@user)
+    if @user.nil?
+    	redirect_to root_url
+    elsif current_user?(@user)
       redirect_to root_url
     else
       @user.destroy

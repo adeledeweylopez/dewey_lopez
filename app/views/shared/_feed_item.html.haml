@@ -16,5 +16,6 @@
 			|
 			= link_to "delete", feed_item, method: :delete, data: { confirm: "You sure?" }, title: feed_item.title
 			|
-		= link_to 'permalink', page_url(feed_item)
+		- if !current_page?(page_url(feed_item))
+			= link_to 'permalink', page_url(feed_item)
 				

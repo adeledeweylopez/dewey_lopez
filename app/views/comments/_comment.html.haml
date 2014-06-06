@@ -26,14 +26,18 @@
 			%span.reply.pull-right
 				%a{:href => "#reply-to-#{comment.id}"}(data-toggle="collapse")
 					reply
-				-# TODO: Implement edit (with cookies) and delete.
+	
 				- if owns_comment?(comment)
 					|
 					%a{:href => "#edit-#{comment.id}"}(data-toggle="collapse") 
 						edit
 					| 
 					= link_to "delete", comment, method: :delete, data: { confirm: "You sure?" }
-    
+				- elsif !current_user.nil?
+					- if current_user.admin?
+						| 
+						= link_to "delete", comment, method: :delete, data: { confirm: "You sure?" }
+	    
 					
 
 	.panel-collapse.collapse{:id => "reply-to-#{comment.id}"}
