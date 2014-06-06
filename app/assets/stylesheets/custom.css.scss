@@ -15,7 +15,7 @@
 // http://paletton.com/#uid=53L0Q0kp3wu8VXLixJMtunrBb78
 $hot-pink		: #d8317a;
 $hot-light-pink : #ea649f;
-$white 			: #f8f8f8;
+$white 			: #faf9f7;
 $violet			: #41157f;
 $purple			: #6633ae;
 $lavender		: #9365d3;
@@ -84,6 +84,7 @@ p {
 }
 
 .nav-tabs > li.active >a {
+	background-color: $white;
 	border-color: $light-lavender;
 	border-bottom-color: transparent;
 }
@@ -92,13 +93,14 @@ p {
 	color:	$hot-pink;
 	&:hover {
 		color: $violet;
+	//	background-color: $light-lavender;
 		text-decoration: none;
 		border-bottom-color: $light-lavender;
 	}
 }
 
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-	background-color: #eeeeee;
+	background-color: $white;
 	color: $violet;
 	border-color: $light-lavender;
 	border-bottom-color: transparent;
@@ -318,6 +320,10 @@ pre > a {
 .score {
 	color: $hot-light-pink;
 	padding-left: 4px;
+}
+
+.reply {
+	color: $black;
 }
 
 .reply > a {

@@ -14,7 +14,7 @@ module ApplicationHelper
     # markdown. We pass some parameters to make 
     # formatting CodeRay easier.
     return Kramdown::Document.new(text, 
-      coderay_line_numbers: :table, 
+      coderay_line_numbers: nil, 
       coderay_css: :class).to_html
   end
 end

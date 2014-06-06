@@ -27,12 +27,30 @@
 				%a{:href => "#reply-to-#{comment.id}"}(data-toggle="collapse")
 					reply
 				-# TODO: Implement edit (with cookies) and delete.
-				| edit | delete
+				- if owns_comment?(comment)
+					|
+					%a{:href => "#edit-#{comment.id}"}(data-toggle="collapse") 
+						edit
+					| 
+					= link_to "delete", comment, method: :delete, data: { confirm: "You sure?" }
+    
+					
 
 	.panel-collapse.collapse{:id => "reply-to-#{comment.id}"}
 		.panel-body
+			- @new_comment = @page.comments.build
 			- @indentation = comment.level + 1
 			- @parent_id = comment.id
+			- @button_text = "Comment"
 			= render partial: 'shared/comment_form', object: @new_comment
+
+	.panel-collapse.collapse{:id => "edit-#{comment.id}"}
+		.panel-body
+			- @new_comment = comment
+			- @indentation = comment.level
+			- @parent_id = comment.parent_id
+			- @button_text = "Update"
+			= render partial: 'shared/comment_form', object: @new_comment	
+
 
 = render @page.comments.where("parent_id = ?", comment.id)
