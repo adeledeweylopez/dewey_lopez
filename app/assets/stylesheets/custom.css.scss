@@ -207,7 +207,9 @@ aside {
 
 
 /* forms */
-
+form {
+	margin-top: 10px;
+}
 
 .btn {
 	border: none;
@@ -294,6 +296,11 @@ pre > a {
 .CodeRay .predefined-constant { color: $peaceful-blue; }                      /* boolean */
 
 /* Comments */
+
+.comment-heading {
+	margin-top: -1px;
+	margin-bottom: 3px;
+}
 
 .page-comment {
 	a{

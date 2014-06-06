@@ -4,9 +4,9 @@
 		= render partial: 'shared/feed_item', object: @page	
 		- @parent_id = 0
 		= render partial: 'shared/comment_form', object: @new_comment
-.row
-	
+.row.comment-row
 	- if @comments.any?
-		%h3 Comments
 		.comments
+			.col-md-8
+				%h3.comment-heading Comments:
 			= render @comments
