@@ -10,6 +10,11 @@ module ApplicationHelper
   end
 
   def kramdown(text)
-		return Kramdown::Document.new(text, coderay_line_numbers: :table).to_html
- 	end
+    # Format text using kramdown, a super-set of
+    # markdown. We pass some parameters to make 
+    # formatting CodeRay easier.
+    return Kramdown::Document.new(text, 
+      coderay_line_numbers: :table, 
+      coderay_css: :class).to_html
+  end
 end

@@ -4,6 +4,6 @@
 	%h3
 		-#= link_to user.name, user	
 		- blog_name = "#{user.name[/(\S+(\s+)?){,#{1}}/].strip}'s blog"
-		= link_to blog_name, blog_url(user), class: "subtle-link"
+		= link_to blog_name, blog_url(user.user_alias), class: "subtle-link"
 		
 	

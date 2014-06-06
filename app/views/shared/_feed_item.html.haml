@@ -3,8 +3,7 @@
 		%a.subtle-link{href: page_url(feed_item)}
 			!~ kramdown feed_item.title
 	%span.content
-		!~ kramdown feed_item.content
-	
+		!~kramdown feed_item.content
 	%span.timestamp
 		:erb
 			Posted <%= time_ago_in_words(feed_item.created_at) %> ago 

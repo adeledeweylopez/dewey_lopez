@@ -1,12 +1,17 @@
-- @max_level = 4
+-# TODO: Refactor to put more of the logic in the model. 
+
+- @max_level = 5
+-# When we hit the edge of the screen, we stop indenting the comments
+-# and instead put up the text "Reply to <parent.name>"
 - @display_level = comment.level.to_i < @max_level ? comment.level : @max_level
-%div{ :class => "col-md-8 col-md-offset-#{@display_level}" }
-	.comment
-		%a
+%div{ :class => "col-md-7 col-md-offset-#{@display_level}", :id => "comment-#{comment.id}" }
+	.page-comment
+		%a(href = "http://#{comment.website}")
 			= comment.name	
 		
 		%span.score
-			13 points
+			-# TODO: Implement scoring.
+			0 points
 		%span.parent.pull-right
 			- if comment.parent_id != 0
 				- @parent = Comment.find_by(id: comment.parent_id)
@@ -21,12 +26,13 @@
 			%span.reply.pull-right
 				%a{:href => "#reply-to-#{comment.id}"}(data-toggle="collapse")
 					reply
+				-# TODO: Implement edit (with cookies) and delete.
+				| edit | delete
 
 	.panel-collapse.collapse{:id => "reply-to-#{comment.id}"}
 		.panel-body
 			- @indentation = comment.level + 1
 			- @parent_id = comment.id
 			= render partial: 'shared/comment_form', object: @new_comment
-
 
 = render @page.comments.where("parent_id = ?", comment.id)
