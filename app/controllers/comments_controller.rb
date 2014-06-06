@@ -8,7 +8,9 @@ class CommentsController < ApplicationController
       remember_comment @comment
       flash[:success] = "Comment posted!"
     else
-      #flash[:error] = "Invalid comment"
+      @comment.errors.full_messages.each do |msg| 
+        flash[:error] = msg
+      end
     end
     
     redirect_to page_url(@page)
@@ -21,10 +23,21 @@ class CommentsController < ApplicationController
   def update
     # TODO: Fix messaging system.
     @comment = Comment.find_by(id: params[:id])
-    if @comment.update_attributes(comment_params)
-      flash[:success] = "Comment updated"
-    else
+    if owns_comment?(@comment)
+      if @comment.update_attributes(comment_params)
+        flash[:success] = "Comment updated"
+      else
+         @comment.errors.full_messages.each do |msg| 
+         flash[:error] = msg
+        end
+      end
+      #TODO: Implement scoring
+    #   else
+    #   end
+    # else
+    #   @comment.update_attributes(comment_params)
     end
+      
     @page = Page.find_by(id: @comment.page_id)
      redirect_to page_url(@page)
   end
@@ -37,15 +50,29 @@ class CommentsController < ApplicationController
     redirect_to page_url(@page)
   end
 
+  def upvote
+    @page = Page.find_by(id: @comment.page_id)
+    @comment = Comment.find_by(id: params[:id])
+    @comment.update_attributes(:score => (@comment.score+1))
+    respond_to do |format|
+      format.html { redirect_to page_url(@page) }
+      format.js
+    end
+  end
+
+  def downvote
+  end
+
   private
 
     def comment_params
       params.require(:comment).permit(:name, 
-      								  :content, 
-      								  :page_id, 
-      								  :email, 
-      								  :level, 
-      								  :parent_id, 
-      								  :website)
+                    								  :content, 
+                    								  :page_id, 
+                    								  :email, 
+                    								  :level, 
+                    								  :parent_id, 
+                    								  :website,
+                                      :score)
     end
 end

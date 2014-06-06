@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140606150847) do
+ActiveRecord::Schema.define(version: 20140606223440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,10 +27,12 @@ ActiveRecord::Schema.define(version: 20140606150847) do
     t.integer  "level"
     t.integer  "parent_id"
     t.string   "token"
+    t.integer  "score"
   end
 
   add_index "comments", ["page_id"], name: "index_comments_on_page_id", using: :btree
   add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
+  add_index "comments", ["score", "created_at"], name: "index_comments_on_score_and_created_at", using: :btree
   add_index "comments", ["token"], name: "index_comments_on_token", using: :btree
 
   create_table "pages", force: true do |t|
@@ -55,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140606150847) do
     t.string   "remember_token"
     t.boolean  "admin",           default: false
     t.string   "user_alias"
+    t.string   "icon"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

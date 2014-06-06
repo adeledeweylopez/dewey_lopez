@@ -12,6 +12,7 @@
 			= f.hidden_field :page_id, value: @page.id
 			= f.hidden_field :level, value: @indentation
 			= f.hidden_field :parent_id, value: @parent_id
+			= f.hidden_field :score, value: @score
 		.form-group
 			= f.submit @button_text, class: "btn btn-large btn-primary"
 			%button.btn.btn-large.btn-primary(type = "button" data-toggle="modal" data-target="#formatting_help")

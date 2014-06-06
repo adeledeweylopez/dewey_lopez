@@ -11,7 +11,11 @@
 		
 		%span.score
 			-# TODO: Implement scoring.
-			0 points
+			=# form_for(comment) do |f|
+			=# 		f.hidden_field :score, value: comment.score + 1
+			=# 		f.submit "Upvote", class: "score"
+			= comment.score
+			points
 		%span.parent.pull-right
 			- if comment.parent_id != 0
 				- @parent = Comment.find_by(id: comment.parent_id)
@@ -37,15 +41,14 @@
 					- if current_user.admin?
 						| 
 						= link_to "delete", comment, method: :delete, data: { confirm: "You sure?" }
-	    
-					
-
+	    						
 	.panel-collapse.collapse{:id => "reply-to-#{comment.id}"}
 		.panel-body
 			- @new_comment = @page.comments.build
 			- @indentation = comment.level + 1
 			- @parent_id = comment.id
 			- @button_text = "Comment"
+			- @score = 0
 			= render partial: 'shared/comment_form', object: @new_comment
 
 	.panel-collapse.collapse{:id => "edit-#{comment.id}"}
@@ -54,6 +57,7 @@
 			- @indentation = comment.level
 			- @parent_id = comment.parent_id
 			- @button_text = "Update"
+			- @score = comment.score
 			= render partial: 'shared/comment_form', object: @new_comment	
 
 

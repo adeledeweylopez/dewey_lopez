@@ -13,7 +13,6 @@ class PagesController < ApplicationController
       flash[:success] = "Post created!"
       redirect_to blog_url(current_user)
     else
-      flash[:error] = "Can't be blank"
       redirect_to blog_url(current_user)
     end
   end
@@ -33,6 +32,7 @@ class PagesController < ApplicationController
     @page = Page.find_by(id: params[:id])
     # Indentation level of comment, starts at 0.
     @indentation = 0 
+    @score = 0
     @comments = @page.comments.where("parent_id = ?", 0)
   end
 

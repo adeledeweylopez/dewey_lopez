@@ -14,13 +14,22 @@
 					%a{href: root_path} 
 						:erb
 							<span class="glyphicon glyphicon-home"></span> Home
+
+				- User.all.each do | user | 
+					%li{:class => "#{'active' if current_page?(username_url(user.user_alias)) || current_page?(blog_url(user.user_alias)) }"}
+						%a{href: username_url(user.user_alias)}
+							:erb
+								<span class="glyphicon glyphicon-<%= user.icon %>"></span>
+							= user.user_alias.titleize
+
 				%li{:class => "#{'active' if current_page?(users_path)}"}
 					%a{href: users_path}
 						:erb
 							<span class="glyphicon glyphicon-align-justify"></span> Blogs
+
 				- if signed_in?
 					
-					%li.dropdown#fat-menu{:class => "#{'active' if current_page?(current_user) || current_page?(blog_url(current_user)) || current_page?(edit_user_path(current_user))}"}
+					%li.dropdown#fat-menu{:class => "#{'active' if  current_page?(edit_user_path(current_user.user_alias))}"}
 						%a.dropdown-toggle(data-toggle="dropdown"){href: "#" }
 							:erb
 								<span class="glyphicon glyphicon-user"></span> Account
@@ -33,10 +42,3 @@
 							%li.divider
 							%li
 								= link_to "Sign out", signout_path, method: "delete"
-				- else
-					%li
-						%a{href: signin_path}
-							:erb
-									<span class="glyphicon glyphicon-user"></span> Sign in
-				
-					

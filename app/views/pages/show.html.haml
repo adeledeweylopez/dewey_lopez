@@ -4,6 +4,7 @@
 		= render partial: 'shared/feed_item', object: @page	
 		- @parent_id = 0
 		- @button_text = "Comment"
+		
 		= render partial: 'shared/comment_form', object: @new_comment
 .row.comment-row
 	- if @comments.any?

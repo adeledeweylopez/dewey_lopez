@@ -11,6 +11,20 @@
 
 				= f.submit "Save changes", class: "btn btn-large btn-primary"
 
-		-#= gravatar_for @user
-		=#= link_to "http://gravatar.com/emails", :target => "_blank" do 
-		-#change
+		
+
+	.col-md-4
+		%aside
+			.span4
+				%section
+					%ul
+						%li
+							The available icons are listed
+							= link_to "http://getbootstrap.com/components/#glyphicons-glyphs", :tarbet => "_blank" do
+								here.
+						%li
+							
+							Your picture can be changed
+							= link_to "http://gravatar.com/emails", :target => "_blank" do 
+								here.
+							= gravatar_for @user

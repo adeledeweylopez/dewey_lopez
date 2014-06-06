@@ -76,6 +76,7 @@ p {
 .navbar {
    margin-bottom: 10px;
    border: none;
+   background-color: $white;
 }
 
 .nav-tabs {
@@ -253,6 +254,9 @@ form {
 	color: $gray-light;
 }
 
+// .post {
+// 	margin-left: 10px;
+// }
 
 // Code blocks:
 pre {
@@ -298,6 +302,38 @@ pre > a {
 .CodeRay .symbol { color: $peaceful-blue; }                      /* symbol */
 .CodeRay .tag { color:#E7BE69 }                      /* html tag */
 .CodeRay .predefined-constant { color: $peaceful-blue; }                      /* boolean */
+
+
+// tables
+
+table {
+  width: 100%;
+}
+  table > thead > tr > th,
+  table > thead > tr > td,
+  table > tbody > tr > th,
+  table > tbody > tr > td,
+  table > tfoot > tr > th,
+  table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.428571429;
+    vertical-align: top;
+    border-top: 1px solid #dddddd; }
+  table > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dddddd; }
+  table > caption + thead > tr:first-child > th,
+  table > caption + thead > tr:first-child > td,
+  table > colgroup + thead > tr:first-child > th,
+  table > colgroup + thead > tr:first-child > td,
+  table > thead:first-child > tr:first-child > th,
+  table > thead:first-child > tr:first-child > td {
+    border-top: 0; }
+  table > tbody + tbody {
+    border-top: 2px solid #dddddd; }
+  table .table {
+    background-color: white; }
+
 
 /* Comments */
 
@@ -396,3 +432,8 @@ pre > a {
 //  	padding: 0px;
 // }
 
+/* errors */
+
+// .alert .alert-danger {
+// 	color: $green-pasture;
+// }
