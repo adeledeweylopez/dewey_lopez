@@ -3,8 +3,9 @@
 
 .row
 	.col-md-7
-		= form_for (@user) do |f|
-			= render 'shared/error_messages', object: f.object
+		= form_for(@user, class: "form-horizontal") do |f|
+			.form-horizontal
+				= render 'shared/error_messages', object: f.object
 
-			= render 'fields', f: f
-			= f.submit "Create my account", class: "btn btn-large btn-primary"
+				= render 'fields', f: f
+				= f.submit "Create my account", class: "btn btn-large btn-primary"
