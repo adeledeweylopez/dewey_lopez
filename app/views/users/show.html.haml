@@ -11,9 +11,9 @@
 					
 					= link_to "edit", edit_page_path(user_profile)
 				- if current_user
-					- if current_user.admin? && !current_user?(user) 
+					- if current_user.admin?  
 						|
-						= link_to "delete", user, method: :delete, data: { confirm: "You sure?" }
+						= link_to "delete", user_path(current_user.id), method: :delete, data: { confirm: "You sure?" }
 		- else
 			%h1= @user.name
 			%p
