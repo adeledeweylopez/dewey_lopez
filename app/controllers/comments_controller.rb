@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
       end
     end
     
-    redirect_to page_url(@page)
+    redirect_to post_url(user_alias: User.find(@page.user_id).user_alias, page_alias: @page.page_alias)
   end
 
   def show
@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
     end
       
     @page = Page.find_by(id: @comment.page_id)
-     redirect_to page_url(@page)
+     redirect_to post_url(user_alias: User.find(@page.user_id).user_alias, page_alias: @page.page_alias)
   end
 
   def destroy

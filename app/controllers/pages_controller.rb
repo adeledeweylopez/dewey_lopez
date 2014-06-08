@@ -47,7 +47,7 @@ class PagesController < ApplicationController
     @page = find_page
     if @page.update_attributes(page_params)
       flash[:success] = "Post updated"
-      redirect_to @page
+      redirect_to post_url(user_alias: User.find(@page.user_id).user_alias, page_alias: @page.page_alias)
     else
       render 'edit'
     end
