@@ -16,16 +16,24 @@
 							<span class="glyphicon glyphicon-home"></span> Home
 
 				- User.all.each do | user | 
-					%li{:class => "#{'active' if current_page?(username_url(user.user_alias)) || current_page?(blog_url(user.user_alias)) }"}
+					%li{:class => "#{'active' if current_page?(username_url(user.user_alias)) }"}
 						%a{href: username_url(user.user_alias)}
 							:erb
 								<span class="glyphicon glyphicon-<%= user.icon %>"></span>
 							= user.user_alias.titleize
 
-				%li{:class => "#{'active' if current_page?(users_path)}"}
-					%a{href: users_path}
+				%li.dropdown{:class => "#{'active' if user_blog }"}
+					%a.dropdown-toggle(data-toggle="dropdown"){href: "#"}
 						:erb
 							<span class="glyphicon glyphicon-align-justify"></span> Blogs
+						%b.caret
+						%span.dropdown-arrow
+					%ul.dropdown-menu
+						- User.all.each do | user | 
+							%li
+								%a{href: blog_url(user.user_alias)}
+									= "#{user.user_alias.titleize}'s blog"
+
 
 				- if signed_in?
 					

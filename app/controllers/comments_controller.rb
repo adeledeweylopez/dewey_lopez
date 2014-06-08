@@ -1,19 +1,19 @@
 class CommentsController < ApplicationController
 
   def create
-  	# TODO: Fix flash messaging 
+    # TODO: Fix flash messaging
     @page = Page.find_by(id: params[:comment][:page_id])
     @comment = @page.comments.build(comment_params)
     if @comment.save
       remember_comment @comment
       flash[:success] = "Comment posted!"
     else
-      @comment.errors.full_messages.each do |msg| 
+      @comment.errors.full_messages.each do |msg|
         flash[:error] = msg
       end
     end
-    
-    redirect_to post_url(user_alias: User.find(@page.user_id).user_alias, page_alias: @page.page_alias)
+
+    redirect_to page_path_helper(@page)
   end
 
   def show
@@ -27,19 +27,19 @@ class CommentsController < ApplicationController
       if @comment.update_attributes(comment_params)
         flash[:success] = "Comment updated"
       else
-         @comment.errors.full_messages.each do |msg| 
-         flash[:error] = msg
+        @comment.errors.full_messages.each do |msg|
+          flash[:error] = msg
         end
       end
       #TODO: Implement scoring
-    #   else
-    #   end
-    # else
-    #   @comment.update_attributes(comment_params)
+      #   else
+      #   end
+      # else
+      #   @comment.update_attributes(comment_params)
     end
-      
+
     @page = Page.find_by(id: @comment.page_id)
-     redirect_to post_url(user_alias: User.find(@page.user_id).user_alias, page_alias: @page.page_alias)
+    redirect_to page_path_helper(@page)
   end
 
   def destroy
@@ -47,7 +47,7 @@ class CommentsController < ApplicationController
     @page = Page.find_by(id: @comment.page_id)
     forget_comment(@comment)
     @comment.destroy
-    redirect_to page_url(@page)
+    redirect_to page_path_helper(@page)
   end
 
   def upvote
@@ -55,7 +55,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id])
     @comment.update_attributes(:score => (@comment.score+1))
     respond_to do |format|
-      format.html { redirect_to page_url(@page) }
+      format.html { redirect_to page_path_helper(@page) }
       format.js
     end
   end
@@ -65,14 +65,14 @@ class CommentsController < ApplicationController
 
   private
 
-    def comment_params
-      params.require(:comment).permit(:name, 
-                    								  :content, 
-                    								  :page_id, 
-                    								  :email, 
-                    								  :level, 
-                    								  :parent_id, 
-                    								  :website,
-                                      :score)
-    end
+  def comment_params
+    params.require(:comment).permit(:name,
+                                    :content,
+                                    :page_id,
+                                    :email,
+                                    :level,
+                                    :parent_id,
+                                    :website,
+                                    :score)
+  end
 end

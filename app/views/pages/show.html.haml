@@ -6,7 +6,11 @@
 			- @parent_id = 0
 			- @button_text = "Comment"
 			= render partial: 'shared/comment_form', object: @new_comment
-	
+	.col-md-4
+		- @user = User.find(@page.user_id)
+		- @display = true
+		= render 'shared/sidebar'
+
 - if !@page.sequence 
 	.row.comment-row
 		- if @comments.any?
