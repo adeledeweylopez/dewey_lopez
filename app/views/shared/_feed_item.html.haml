@@ -1,7 +1,7 @@
 %ui{id: feed_item.id, page_alias: feed_item.page_alias}
 	%h3
 		%a.subtle-link{href: post_url(user_alias: User.find(feed_item.user_id).user_alias, page_alias: feed_item.page_alias)}
-		= feed_item.title
+			= feed_item.title
 	%div.post
 		%span.content
 			!~kramdown feed_item.content
