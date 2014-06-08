@@ -207,10 +207,21 @@ aside {
 	}
 }
 
-.gravatar {
-	float: left;
-	margin-right: 10px;
+.blogroll {
+	width: 80%;
+	h1, h2 {
+		text-align: center;
+	}
+	a {
+		color: $hot-pink;
+	}
+	float: right;
 }
+
+// .gravatar {
+// 	float: left;
+// 	margin-right: 10px;
+// }
 
 
 /* forms */

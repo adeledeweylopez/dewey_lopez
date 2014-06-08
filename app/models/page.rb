@@ -5,4 +5,8 @@ class Page < ActiveRecord::Base
   validates :content, presence: true
   validates :user_id, presence: true
   validates :title,   presence: true, uniqueness: true
+
+  def find_page
+  	Page.find_by(id: params[:page_id])
+  end
 end

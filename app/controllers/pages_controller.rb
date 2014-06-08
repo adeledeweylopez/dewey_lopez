@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   before_action :signed_in_user,  only: [:create, :destroy]
   before_action :correct_user,    only: [:edit, :destroy, :update]
+  before_action :public_post,     only: [:show]
 
   def new
     @page= Page.new
@@ -23,13 +24,13 @@ class PagesController < ApplicationController
   end
 
   def show
-    @page = Page.find_by(id: params[:id])
+    @page = find_page
     @new_comment = @page.comments.build
     
     # HACK: Need to reload the @page variable,
     # otherwise there is a blank comment
     # which causes problems.
-    @page = Page.find_by(id: params[:id])
+    @page = find_page
     # Indentation level of comment, starts at 0.
     @indentation = 0 
     @score = 0
@@ -37,13 +38,13 @@ class PagesController < ApplicationController
   end
 
   def edit
-    @page = Page.find_by(id: params[:id])
+    @page = find_page
 
   end
 
   def update
     # TODO: Fix flash messages.
-    @page = Page.find_by(id: params[:id])
+    @page = find_page
     if @page.update_attributes(page_params)
       flash[:success] = "Post updated"
       redirect_to @page
@@ -56,7 +57,7 @@ class PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:page).permit(:title, :content, :sequence, :public)
+    params.require(:page).permit(:title, :content, :sequence, :public, :page_alias)
   end
 
   def correct_user
@@ -72,4 +73,12 @@ class PagesController < ApplicationController
 
     redirect_to user_url(current_user) if @page.nil?
   end
+
+  def public_post
+    @page = find_page
+    if !@page.public
+     redirect_to root_url unless current_user.id = @page.user_id
+   end
+  end
+
 end

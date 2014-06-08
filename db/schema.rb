@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140606223440) do
+ActiveRecord::Schema.define(version: 20140608033119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140606223440) do
     t.boolean  "sequence",   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "page_alias"
   end
 
   add_index "pages", ["title"], name: "index_pages_on_title", unique: true, using: :btree
@@ -58,6 +59,8 @@ ActiveRecord::Schema.define(version: 20140606223440) do
     t.boolean  "admin",           default: false
     t.string   "user_alias"
     t.string   "icon"
+    t.text     "sidebar"
+    t.text     "bio"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

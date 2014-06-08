@@ -2,13 +2,14 @@
 .row
 	.col-md-8
 		= render partial: 'shared/feed_item', object: @page	
-		- @parent_id = 0
-		- @button_text = "Comment"
-		
-		= render partial: 'shared/comment_form', object: @new_comment
-.row.comment-row
-	- if @comments.any?
-		.comments
-			.col-md-8
-				%h3.comment-heading Comments:
-			= render @comments
+		- if !@page.sequence
+			- @parent_id = 0
+			- @button_text = "Comment"
+			= render partial: 'shared/comment_form', object: @new_comment
+- if !@page.sequence 
+	.row.comment-row
+		- if @comments.any?
+			.comments
+				.col-md-8
+					%h3.comment-heading Comments:
+				= render @comments

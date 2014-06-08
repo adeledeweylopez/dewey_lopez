@@ -9,13 +9,4 @@
 				<%= @user.name[/(\S+(\s+)?){,#{1}}/].strip%>'s blog
 		= render 'shared/feed'
 	.col-md-4
-		%aside
-			.span4
-				%section
-					%h1
-						-#= gravatar_for @user
-						= @user.name
-					%h1
-						- if current_user?(@user)
-							= button_to "Create new post", new_page_path(@user), :class => "btn", :method => :get
-
+		= render 'shared/sidebar'

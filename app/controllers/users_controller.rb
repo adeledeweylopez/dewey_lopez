@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :hide_blogroll,     only: [:show]
   before_action :signed_in_user,    only: [:edit, :update, :destroy]
   #before_action :signed_out_user, 	only: [:new, :create]
   before_action :correct_user,		only: [:edit, :update]
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
   def blog
     @user = User.find(params[:user_alias])
     @page = current_user.pages.build if signed_in?
+    @display = true
     if current_user?(@user)
       @feed_items = @user.feed.paginate(page: params[:page])
     else
@@ -78,7 +80,9 @@ class UsersController < ApplicationController
     							   :email, 
     							   :password,
                      :password_confirmation,
-                     :icon)
+                     :icon,
+                     :sidebar,
+                     :bio)
     end
   
     # Before filters
@@ -96,5 +100,9 @@ class UsersController < ApplicationController
   
     def admin_user
       redirect_to(root_url) unless current_user.admin?
+    end
+
+    def hide_blogroll
+      @display = false
     end
 end

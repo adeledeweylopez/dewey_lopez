@@ -2,7 +2,7 @@
 
 - user_profile = Page.find_by(title: @user.name)
 .row
-	.col-md-12
+	.col-md-8
 		- if user_profile
 			%span.content
 				!~ kramdown user_profile.content
@@ -18,3 +18,5 @@
 			%h1= @user.name
 			%p
 				Default profile page - personalize by creating a new post with your name as the title. 
+	.col-md-4
+		= render 'shared/sidebar'

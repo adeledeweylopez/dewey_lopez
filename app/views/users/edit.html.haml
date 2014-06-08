@@ -2,29 +2,40 @@
 %h2 Update your profile
 
 .row
-	.col-md-7
-		= form_for (@user) do |f|
-			.form-horizontal
+	
+	= form_for (@user) do |f|
+		.form-horizontal
+			.col-md-7
 				= render 'shared/error_messages', object: f.object
 
 				= render 'fields', f: f
+				
+				
 
 				= f.submit "Save changes", class: "btn btn-large btn-primary"
+			.col-md-4
+				.form-group
+					= f.text_area :bio, placeholder: "Write a bio...", class: "form-control", rows: 3
+				.form-group
+					= f.text_area :sidebar, placeholder: "Create a side bar...", class: "form-control", rows: 6
+.row
+	.col-md-7				
+		.user-edit-help
+			%ul
+				%li
+					The available icons are listed
+					= link_to "http://getbootstrap.com/components/#glyphicons-glyphs", :tarbet => "_blank" do
+						here.
+				%li
+					
+					Your picture can be changed
+					= link_to "http://gravatar.com/emails", :target => "_blank" do 
+						here.
+
+					= #gravatar_for @user
 
 		
 
-	.col-md-4
-		%aside
-			.span4
-				%section
-					%ul
-						%li
-							The available icons are listed
-							= link_to "http://getbootstrap.com/components/#glyphicons-glyphs", :tarbet => "_blank" do
-								here.
-						%li
-							
-							Your picture can be changed
-							= link_to "http://gravatar.com/emails", :target => "_blank" do 
-								here.
-							= gravatar_for @user
+
+			
+					

@@ -2,6 +2,8 @@ DeweyLopez::Application.routes.draw do
   resources :users, param: :user_alias
   resources :pages
 
+  get ':user_alias/blog/:page_alias' => 'pages#show'
+
 
   resources :sessions, only: [:new, :create, :destroy]
 

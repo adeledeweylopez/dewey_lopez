@@ -1,20 +1,25 @@
 = form_for(@page, class: "form-horizontal") do |f|
 	= render 'shared/error_messages', object: f.object
-	.field
+	.form-horizontal
 		.form-group
 			-#= f.label :title, "Title"
-			= f.text_field :title,	placeholder: "Title", class: "form-control"
+			.col-md-6
+				= f.text_field :title,	placeholder: "Title", class: "form-control"
+			.col-md-4
+				= f.text_field :page_alias,	placeholder: "(alias)", class: "form-control"
 		.form-group
-			= f.text_area :content, placeholder: "Write a new post...", class: "form-control", rows: 20
+			.col-md-10
+				= f.text_area :content, placeholder: "Write a new post...", class: "form-control", rows: 20
 		.form-group
-			= f.submit "Submit", class: "btn btn-large btn-primary"
-			%button.btn(type = "button" data-toggle="modal" data-target="#formatting_help")
-				Formatting help
-			.pull-right
-				.checkbox-inline
-					:erb
-						<%= f.check_box :sequence%> Sequence
-				.checkbox-inline
-					:erb		
-						<%= f.check_box :public%> Public
+			.col-md-10
+				= f.submit "Submit", class: "btn btn-large btn-primary"
+				%button.btn(type = "button" data-toggle="modal" data-target="#formatting_help")
+					Formatting help
+				.pull-right
+					.checkbox-inline
+						:erb
+							<%= f.check_box :sequence%> Sequence
+					.checkbox-inline
+						:erb		
+							<%= f.check_box :public%> Public
 = render 'shared/formatting_help'

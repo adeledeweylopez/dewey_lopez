@@ -3,6 +3,6 @@
 	.col-md-10
 		%h2
 			New page 
-		- if signed_in?
-			.row
-				= render 'shared/create_page_form'
+- if signed_in?
+	.row
+		= render 'shared/create_page_form'
