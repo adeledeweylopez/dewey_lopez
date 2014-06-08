@@ -80,7 +80,7 @@ DeweyLopez::Application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security,
   # and use secure cookies.
-  config.force_ssl = true
+ # config.force_ssl = true
 
   config.cache_classes = true
 config.serve_static_assets = true
