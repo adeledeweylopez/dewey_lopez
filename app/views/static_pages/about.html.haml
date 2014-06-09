@@ -5,8 +5,9 @@
 		- if about
 			%span.content
 				!~ kramdown about.content
-			%ul.pull-right
-				= link_to "edit", edit_page_path(about)
+			- if current_admin
+				%ul.pull-right
+					= link_to "edit", edit_page_path(about)
 		- else
 			%h1 About
 			%p
