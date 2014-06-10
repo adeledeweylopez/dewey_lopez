@@ -25,6 +25,10 @@ class PagesController < ApplicationController
 
   def show
     @page = find_page
+    if current_user != User.find(@page.user_id)
+      redirect_to blog_url(current_user)
+    end
+
     @new_comment = @page.comments.build
     
     # HACK: Need to reload the @page variable,
