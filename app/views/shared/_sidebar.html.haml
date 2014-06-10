@@ -10,16 +10,16 @@
 				.caption
 					= @user.bio unless @user.bio.nil?
 			
-			-if @display
-				!~ kramdown @user.sidebar unless @user.sidebar.nil?
-				%h2
-					Recent posts
-				%ul
-					- @user.pages.all.each do |page| 
-						- if page.public 
-							%li
-								%p
-									= link_to page.title, page_path_helper(page) unless page.sequence
+			- #if @display
+			!~ kramdown @user.sidebar unless @user.sidebar.nil?
+			%h2
+				Recent posts
+			%ul
+				- @user.pages.all.each do |page| 
+					- if page.public 
+						%li
+							%p
+								= link_to page.title, page_path_helper(page) unless page.sequence
 			%h1
 				- if current_user?(@user)
 					- if @display
