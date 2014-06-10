@@ -1,4 +1,4 @@
-- provide(:title, @page)
+- provide(:title, @page.page_alias.titleize)
 .row
 	.col-md-8
 		= render partial: 'shared/feed_item', object: @page	
