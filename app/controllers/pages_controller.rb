@@ -25,20 +25,24 @@ class PagesController < ApplicationController
 
   def show
     @page = find_page
-    if current_user != User.find(@page.user_id)
-      redirect_to blog_url(current_user)
-    end
+    if !@page.public
+      if !current_user
+        redirect_to root_url
+      end
+    else
 
-    @new_comment = @page.comments.build
-    
-    # HACK: Need to reload the @page variable,
-    # otherwise there is a blank comment
-    # which causes problems.
-    @page = find_page
-    # Indentation level of comment, starts at 0.
-    @indentation = 0 
-    @score = 0
-    @comments = @page.comments.where("parent_id = ?", 0)
+
+      @new_comment = @page.comments.build
+      
+      # HACK: Need to reload the @page variable,
+      # otherwise there is a blank comment
+      # which causes problems.
+      @page = find_page
+      # Indentation level of comment, starts at 0.
+      @indentation = 0 
+      @score = 0
+      @comments = @page.comments.where("parent_id = ?", 0)
+    end
   end
 
   def edit
