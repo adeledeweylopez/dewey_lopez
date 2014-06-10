@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome!"
-      redirect_to username_url(user.user_alias)
+      redirect_to username_url(@user.user_alias)
     else
       render 'new'
     end
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   	# TODO: Fix messaging system.
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
-      redirect_to username_url(user.user_alias)
+      redirect_to username_url(@user.user_alias)
     else
       render 'edit'
     end
