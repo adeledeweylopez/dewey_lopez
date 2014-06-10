@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   	# TODO: Fix messaging system.
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
-      redirect_to post_url(user_alias: User.find(@user.user_id).user_alias, page_alias: @user.page_alias)
+      redirect_to @user
     else
       render 'edit'
     end
