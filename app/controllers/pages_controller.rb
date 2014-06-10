@@ -25,11 +25,7 @@ class PagesController < ApplicationController
 
   def show
     @page = find_page
-    if !@page.public
-      if !current_user
-        redirect_to root_url
-      end
-    else
+    
 
 
       @new_comment = @page.comments.build
@@ -42,7 +38,7 @@ class PagesController < ApplicationController
       @indentation = 0 
       @score = 0
       @comments = @page.comments.where("parent_id = ?", 0)
-    end
+   
   end
 
   def edit
