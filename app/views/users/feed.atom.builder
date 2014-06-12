@@ -6,13 +6,16 @@ atom_feed :language => 'en-US' do |feed|
      next if item.updated_at.blank?
 
      feed.entry( item ) do |entry|
-       #entry.url page_url(item)
+       entry.url page_path_helper(item)
        entry.title item.title
 
-       entry.content item.content, :type => 'html'
+       entry.content (kramdown item.content), :type => 'html'
        # the strftime is needed to work with Google Reader.
        entry.updated(item.updated_at.strftime("%Y-%m-%dT%H:%M:%SZ")) 
- 
+  
+       entry.author @user.name
+
+
      end
    end
 end
