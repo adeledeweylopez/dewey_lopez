@@ -20,6 +20,19 @@
 						%li
 							%p
 								= link_to page.title, page_path_helper(page) unless page.sequence
+			%h2
+				Recent comments
+			%ul
+				- Comment.all.each do |comment| 
+					- @comment_page = Page.find(comment.page_id)
+					- if @comment_page.user_id == @user.id  
+						%li
+
+							.page-comment>
+								%a(href = "http://#{comment.website}")
+									= comment.name
+								says	
+							= link_to comment.content, page_path_helper(@comment_page)
 			%h1
 				- if current_user?(@user)
 					- if @display

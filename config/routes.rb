@@ -1,9 +1,15 @@
 DeweyLopez::Application.routes.draw do
+
+
   resources :users, param: :user_alias
   resources :pages
 
+
   get ':user_alias/blog/:page_alias' => 'pages#show', as: :post
 
+  get ':user_alias/feed' => 'users#feed',
+      :as => :feed,
+      :defaults => { :format => 'atom' }
 
   resources :sessions, only: [:new, :create, :destroy]
 
@@ -19,6 +25,9 @@ DeweyLopez::Application.routes.draw do
   get ':user_alias/blog' => 'users#blog', as: :blog
   get ':user_alias', to: 'users#show', as: :username
   mathjax 'mathjax'
+
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
