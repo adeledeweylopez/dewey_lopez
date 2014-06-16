@@ -3,6 +3,7 @@ DeweyLopez::Application.routes.draw do
 
   resources :users, param: :user_alias
   resources :pages
+  resources :pictures
 
 
   get ':user_alias/blog/:page_alias' => 'pages#show', as: :post

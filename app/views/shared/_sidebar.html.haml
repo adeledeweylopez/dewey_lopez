@@ -12,6 +12,8 @@
 			
 			- #if @display
 			!~ kramdown @user.sidebar unless @user.sidebar.nil?
+			= auto_discovery_link_tag :atom, "/feed" 
+			= auto_discovery_link_tag :rss, "/feed.rss" 
 			%h2
 				Recent posts
 			%ul

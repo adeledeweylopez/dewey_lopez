@@ -16,6 +16,8 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem 'kramdown', '1.3.3'
 gem 'mathjax-rails', '2.3.0'
 gem 'coderay', '1.1.0'
+gem 'paperclip', '4.1.1'
+gem 'aws-sdk'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
