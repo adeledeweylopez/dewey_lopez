@@ -15,6 +15,9 @@
 				= f.submit "Submit", class: "btn btn-large btn-primary"
 				%button.btn(type = "button" data-toggle="modal" data-target="#formatting_help")
 					Formatting help
+				- if current_user.admin?
+					%a.btn(type = "button" href = new_picture_path target="_blank")
+						Upload a new picture
 				.pull-right
 					.checkbox-inline
 						:erb

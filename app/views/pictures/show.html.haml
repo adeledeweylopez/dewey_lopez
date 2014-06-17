@@ -1,3 +1,8 @@
-This picture can be found at:
-= @picture.photo.url
-= image_tag @picture.photo.url 
+.row
+	.col-md-8
+		%h1= Picture
+		This picture can be found at:
+		%br
+		= @picture.photo.url
+		%a.thumbnail{href: @picture.photo.url}
+			= image_tag @picture.photo.url 

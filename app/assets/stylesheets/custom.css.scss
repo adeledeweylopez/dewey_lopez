@@ -287,7 +287,7 @@ p > a.thumbnail.large {
 	float: right;
 	margin-left: 10px;
 	margin-top: 4px;
-	margin-bottom: 0px;
+	margin-bottom: 2px;
 
 }
 
@@ -305,6 +305,26 @@ p > a.thumbnail.full {
 p > a.thumbnail.small {
 	width: 20%;
 	float: right;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 999px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
 }
 
 // .post {
