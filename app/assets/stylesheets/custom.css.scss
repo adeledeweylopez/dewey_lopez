@@ -288,23 +288,42 @@ p > a.thumbnail.large {
 	margin-left: 10px;
 	margin-top: 4px;
 	margin-bottom: 2px;
+	padding-left: .6em;
+
 
 }
 
 p > a.thumbnail.medium {
 	width: 40%;
 	float: right;
+	padding-left: .6em;
+
 }
 
 p > a.thumbnail.full {
 	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
+	padding-left: .6em;
 }
 
 p > a.thumbnail.small {
 	width: 20%;
 	float: right;
+	padding-left: .6em;
+
+}
+
+span.small.pull-right {
+	color: $gray-light;
+	font-size: .8em;
+	padding-top: 3px;
+}
+
+
+
+strong {
+	float: left;
 }
 
 .btn-file {
