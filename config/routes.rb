@@ -27,7 +27,7 @@ DeweyLopez::Application.routes.draw do
   get "static_pages/about"
   get ':user_alias/blog' => 'users#blog', as: :blog
   get ':user_alias', to: 'users#show', as: :username
-  get ':user_alias/mood' => 'users#mood', as: :moodurl
+  get ':user_alias/mood' => 'users#mood', as: :usermood
   mathjax 'mathjax'
 
   
