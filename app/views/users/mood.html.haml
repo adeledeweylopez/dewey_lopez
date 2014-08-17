@@ -1,0 +1,105 @@
+- provide(:title, @user.name)
+
+
+.row
+	.col-md-8
+
+#mood_chart(style="width: 100%; height: 25%;")
+
+%table.pretty
+	:erb
+		<script type="text/javascript" charset="utf-8">
+			$(function () {
+				new Highcharts.Chart({
+					chart: { 
+						renderTo: 'mood_chart',
+						zoomType: 'x',
+						type: 'spline' },
+					title: { text: "<%= @user.name[/(\S+(\s+)?){,#{1}}/].strip%>\'s mood" },
+					xAxis: { 
+							type: 'datetime',
+							minRange: 3600000 // one hour
+					 		
+					},
+					yAxis: {
+						title: { text: 'Affect'},
+						min: 0,
+						max: 10,
+						minorGridLineWidth: 0,
+						gridLineWidth: 0,
+						alternateGridColor: null,
+						tickInterval: 1
+					},
+					tooltip: {
+						headerFormat: '<b>{series.name}</b><br>',
+						pointFormat: '{point.note}'
+						
+					},
+					plotOptions: {
+						spline: {
+							lineWidth: 4,
+							states: {
+								hover: {
+									lineWidth: 5
+								}
+							},
+							marker: {
+								enabled: false
+							},
+							pointInterval: 3600000, // one hour
+							pointStart: Date.UTC(2009, 9, 6, 0, 0, 0)
+						}
+					},
+					series: [ <% Mood.drop_whites().each do |name| %>
+						{
+							name: "<%= name %>",
+							color: '<%= Mood.get_color(name) %>',
+							data: <%=raw Mood.get_moods(name, @user.id).to_json.html_safe %> 
+						},
+						<% end %>
+				    ]
+				});
+			});
+		</script>
+
+
+= form_for(@new_mood, class: "form-horizontal") do |f|
+	= render 'shared/error_messages', object: f.object
+	.form-horizontal
+	
+		.form-group	
+			.btn-group
+				- Mood.drop_whites().each do |name|
+					%div{:class => "btn mood #{name}", :style => "background-color: #{Mood.get_color(name)}"}
+						= f.label :name, name, class: "form-control"
+						= f.radio_button :name, name, class: "old form-control"
+				= f.radio_button :name, nil, :id => 'hidden_radio', :style => "display:none"
+	
+		.form-group
+			.btn-group-justified
+				- (0..10).each do |num|
+					%div{:class => "btn mood number_#{num}"}
+						= f.label :value, num.to_s, class: "form-control"
+						= f.radio_button :value, num, class: "form-control"
+		.form-group
+			.col-md-2
+				%input.form-control#new_mood_input{ :value => f.object.name, :placeholder => "new mood"}
+			.col-md-2
+				= f.color_field :color, :id => 'color_field', class: "form-control"
+			.col-md-8
+				= f.text_field :notes, placeholder: "notes", class: "form-control"
+
+		.form-group
+			= f.hidden_field :user_id, value: @user.id
+			= f.submit "Dial it in", class: "form-control btn btn-large btn-primary"
+:erb
+	<script type="text/javascript" charset="utf-8">
+		$("#new_mood_input").keyup(function(){
+			$("#hidden_radio").val($(this).val())
+		})
+		$(".old").on("change", function(){
+			var colors = <%= Mood.all_colors().to_json.html_safe %>
+			$("#color_field").val(colors[$(this).val()])
+		})
+	</script>
+	

@@ -14,7 +14,7 @@
 				- if current_user?(@user)
 					- if @display
 						= button_to "Create new post", new_page_path(@user), :class => "btn", :method => :get
-			- #if @display
+						
 			!~ kramdown @user.sidebar unless @user.sidebar.nil?
 			= auto_discovery_link_tag :atom, "/feed" 
 			= auto_discovery_link_tag :rss, "/feed.rss" 

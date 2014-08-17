@@ -76,6 +76,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def mood
+     @user = User.find(params[:user_alias])
+     @new_mood = @user.moods.build
+     Mood.init(@user.id)
+  end
+
   def destroy
     # TODO: Fix messaging system.
     @user = User.find(params[:user_alias])

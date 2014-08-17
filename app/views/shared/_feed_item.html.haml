@@ -7,7 +7,7 @@
 			!~kramdown feed_item.content
 	%span.timestamp
 		:erb
-			Posted <%= time_ago_in_words(feed_item.created_at) %> ago 
+			Posted <%= time_ago_in_words(feed_item.updated_at) %> ago 
 	%span.user
 		by
 		= link_to feed_item.user.name, feed_item.user

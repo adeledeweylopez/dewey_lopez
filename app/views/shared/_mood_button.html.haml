@@ -1,0 +1,10 @@
+= form_for(@new_mood, class: "form-horizontal") do |f|
+	= render 'shared/error_messages', object: f.object
+	.form-horizontal
+	
+		.form-group
+			= f.hidden_field :name, value: @name
+			= f.hidden_field :value, value: @value
+			= f.hidden_field :user_id, value: @user.id
+			.col-md-3
+				= f.submit "new mood", class: "btn btn-large btn-primary"

@@ -53,12 +53,12 @@
 
 	.panel-collapse.collapse{:id => "edit-#{comment.id}"}
 		.panel-body
-			- @new_comment = comment
+			- @current_comment = comment
 			- @indentation = comment.level
 			- @parent_id = comment.parent_id
 			- @button_text = "Update"
 			- @score = comment.score
-			= render partial: 'shared/comment_form', object: @new_comment	
+			= render partial: 'shared/comment_form', object: @current_comment	
 
 
 = render @page.comments.where("parent_id = ?", comment.id)

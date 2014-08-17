@@ -1,6 +1,7 @@
 DeweyLopez::Application.routes.draw do
 
 
+  get "moods/new"
   resources :users, param: :user_alias
   resources :pages
   resources :pictures
@@ -15,6 +16,7 @@ DeweyLopez::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :comments
+  resources :moods
 
   root 'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
@@ -25,6 +27,7 @@ DeweyLopez::Application.routes.draw do
   get "static_pages/about"
   get ':user_alias/blog' => 'users#blog', as: :blog
   get ':user_alias', to: 'users#show', as: :username
+  get ':user_alias/mood' => 'users#mood', as: :usermood
   mathjax 'mathjax'
 
   
