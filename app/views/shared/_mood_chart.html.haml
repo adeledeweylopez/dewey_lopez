@@ -44,7 +44,7 @@
 					
 						}
 					},
-					series: [ <% Mood.drop_whites().each do |name| %>
+					series: [ <% Mood.drop_whites(@user.id).each do |name| %>
 						{
 							name: "<%= name %>",
 							color: '<%= Mood.get_color(name) %>',

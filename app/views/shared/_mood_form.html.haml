@@ -4,7 +4,7 @@
 	
 		.form-group	
 			.btn-group
-				- Mood.drop_whites().each do |name|
+				- Mood.drop_whites(@user.id).each do |name|
 					%div{:class => "btn mood #{name}", :style => "background-color: #{Mood.get_color(name)}"}
 						= f.label :name, name, class: "form-control"
 						= f.radio_button :name, name, class: "old form-control"

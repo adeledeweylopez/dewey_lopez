@@ -3,10 +3,11 @@ class Mood < ActiveRecord::Base
   validates :name,  presence: true, length: { maximum: 10 }
   validates :value, presence: true, :inclusion => { :in => 0..10 }
   validates :color, format: {with: /#[a-f\d]{6}\z/i }
-  
+
 
 
   @colors = Hash.new('#000000')
+  
   def self.init(id)
     Mood.where("user_id = ?",id).order("created_at").pluck(:name,:color).each do |name,color|
       @colors[name] = color
@@ -25,8 +26,8 @@ class Mood < ActiveRecord::Base
     @colors
   end
 
-  def self.drop_whites()
-    Mood.uniq.pluck(:name).reject { |name| get_color(name) == '#ffffff' }
+  def self.drop_whites(id)
+    Mood.where("user_id = ?", id).uniq.pluck(:name).reject { |name| get_color(name) == '#ffffff' }
   end
 
   def self.get_moods(name, id)
