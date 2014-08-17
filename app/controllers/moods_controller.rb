@@ -15,6 +15,12 @@ def create
   end
 
 
+def show
+     @user = current_user
+     
+     Mood.init(@user.id)
+end
+
   private
 
    def mood_params

@@ -18,9 +18,8 @@ gem 'mathjax-rails', '2.3.0'
 gem 'coderay', '1.1.0'
 gem 'paperclip', '4.1.1'
 gem 'aws-sdk'
-gem 'chartkick', '1.3.2'
-gem 'groupdate', '~> 2.2.1'
 gem 'highcharts-rails', '~> 3.0.0'
+gem 'friendly_id', '~> 4.0.10'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do

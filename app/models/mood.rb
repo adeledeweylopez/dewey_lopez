@@ -3,6 +3,7 @@ class Mood < ActiveRecord::Base
   validates :name,  presence: true, length: { maximum: 10 }
   validates :value, presence: true, :inclusion => { :in => 0..10 }
   validates :color, format: {with: /#[a-f\d]{6}\z/i }
+  
 
 
   @colors = Hash.new('#000000')

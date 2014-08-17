@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :hide_blogroll,     only: [:show]
   before_action :signed_in_user,    only: [:edit, :update, :destroy]
   #before_action :signed_out_user,  only: [:new, :create]
-  before_action :correct_user,    only: [:edit, :update]
+  before_action :correct_user,    only: [:edit, :update, :mood]
   before_action :admin_user,    only: [:destroy, :new, :create]
 
   def index

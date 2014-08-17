@@ -1,0 +1,41 @@
+= form_for(@new_mood, class: "form-horizontal") do |f|
+	= render 'shared/error_messages', object: f.object
+	.form-horizontal
+	
+		.form-group	
+			.btn-group
+				- Mood.drop_whites().each do |name|
+					%div{:class => "btn mood #{name}", :style => "background-color: #{Mood.get_color(name)}"}
+						= f.label :name, name, class: "form-control"
+						= f.radio_button :name, name, class: "old form-control"
+				= f.radio_button :name, nil, :id => 'hidden_radio', :style => "display:none"
+	
+		.form-group
+			.btn-group-justified
+				- (0..10).each do |num|
+					%div{:class => "btn mood number_#{num}"}
+						= f.label :value, num.to_s, class: "form-control"
+						= f.radio_button :value, num, class: "form-control"
+		.form-group
+			.col-md-2
+				%input.form-control#new_mood_input{ :value => f.object.name, :placeholder => "new mood"}
+			.col-md-2
+				= f.color_field :color, :id => 'color_field', class: "form-control"
+			.col-md-8
+				= f.text_field :notes, placeholder: "notes", class: "form-control"
+
+		.form-group
+			= f.hidden_field :user_id, value: @user.id
+			- if current_user?(@user)
+				= f.submit "Dial it in", class: "form-control btn btn-large btn-primary"
+:erb
+	<script type="text/javascript" charset="utf-8">
+		$("#new_mood_input").keyup(function(){
+			$("#hidden_radio").val($(this).val())
+		})
+		$(".old").on("change", function(){
+			var colors = <%= Mood.all_colors().to_json.html_safe %>
+			$("#color_field").val(colors[$(this).val()])
+		})
+	</script>
+	
