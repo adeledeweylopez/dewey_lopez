@@ -1,7 +1,7 @@
 Dewey-Lopez
 =========================
 
-This is a personal website for the Dewey-Lopez family. You can visit us at: <http://www.deweylopez.org/>
+This is a personal website for the Dewey-Lopez family. You can visit us at: <http://www.deweylopez.org/>.
 I created this because I wanted to learn how to make and design a website. 
 
 Features:
