@@ -1,6 +1,9 @@
 Dewey-Lopez
 =========================
 
+NOTE: As of September 30th 2014, the website is down for reasons that seem to be related to a spammy botnet known as SEMalt. I will try to have it back up as soon as possible, but I am currently busy with other things. 
+
+
 This is a personal website for the Dewey-Lopez family. You can visit us at: <http://www.deweylopez.org/>.
 I created this because I wanted to learn how to make and design a website. 
 
