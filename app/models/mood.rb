@@ -34,7 +34,7 @@ class Mood < ActiveRecord::Base
     if get_color(name) != '#ffffff'
       Mood.where("name = ? AND user_id = ?", 
         name, id).pluck(:created_at,:value, :notes).map { |date| 
-          {:x => date[0].to_i*1000, :y => date[1].to_f, :note => date[2].to_s} }
+          {:x => date[0].to_i*1000, :y => date[1].to_f, :note => date[2].to_s, :select => true} }
     end
   end
 end
