@@ -2,10 +2,10 @@
 .row
 	.col-md-8
 		= render partial: 'shared/feed_item', object: @page	
-		-# if !@page.sequence
-			-# @parent_id = 0
-			-# @button_text = "Comment"
-			-#= render partial: 'shared/comment_form', object: @new_comment
+		- if !@page.sequence
+			- @parent_id = 0
+			- @button_text = "Comment"
+			= render partial: 'shared/comment_form', object: @new_comment
 	.col-md-4
 		- @user = User.find(@page.user_id)
 		- @display = true

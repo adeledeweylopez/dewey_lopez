@@ -13,7 +13,7 @@ module ApplicationHelper
     # Format text using kramdown, a super-set of
     # markdown. We pass some parameters to make 
     # formatting CodeRay easier.
-    return Kramdown::Document.new(text, 
+    return sanitize Kramdown::Document.new(text, 
       coderay_line_numbers: nil, 
       coderay_css: :class).to_html
   end
