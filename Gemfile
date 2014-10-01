@@ -20,6 +20,7 @@ gem 'paperclip', '4.1.1'
 gem 'aws-sdk'
 gem 'highcharts-rails', '~> 3.0.0'
 gem 'friendly_id', '~> 4.0.10'
+gem 'rack-block-semalt', '~> 1.0.1'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
@@ -69,6 +70,7 @@ end
 
 group :production do
 	gem 'rails_12factor', '0.0.2'
+
 end
 
 # Use ActiveModel has_secure_password
