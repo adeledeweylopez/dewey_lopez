@@ -4,6 +4,8 @@ Dewey-Lopez
 This is a personal website for the Dewey-Lopez family. You can visit us at: <http://www.deweylopez.org/>.
 I created this because I wanted to learn how to make and design a website. 
 
+NOTE: Commenting is currently disabled until I find a good way to deal with spam (not a high priority since it is too low traffic to have recieved any legitimate comments so far). 
+
 Features:
 
 * Personal blogs, with commenting functionality and an ATOM feed. 
