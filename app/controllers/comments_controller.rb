@@ -3,15 +3,15 @@ class CommentsController < ApplicationController
   def create
     # TODO: Fix flash messaging
     @page = Page.find_by(id: params[:comment][:page_id])
-    @comment = @page.comments.build(comment_params)
-    if @comment.save
-      remember_comment @comment
-      flash[:success] = "Comment posted!"
-    else
-      @comment.errors.full_messages.each do |msg|
-        flash[:error] = msg
-      end
-    end
+    #@comment = @page.comments.build(comment_params)
+    #if @comment.save
+    #  remember_comment @comment
+    #   flash[:success] = "Comment posted!"
+    # else
+    #   @comment.errors.full_messages.each do |msg|
+    #     flash[:error] = msg
+    #   end
+    # end
 
     redirect_to page_path_helper(@page)
   end
