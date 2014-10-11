@@ -7,7 +7,7 @@
 				new Highcharts.Chart({
 					chart: { 
 						renderTo: 'mood_chart',
-)						zoomType: 'x',
+						zoomType: 'x',
 						type: 'spline' },
 					title: { text: "<%= @user.name[/(\S+(\s+)?){,#{1}}/].strip%>\'s mood" },
 					xAxis: { 
@@ -44,7 +44,6 @@
 							},
 							pointInterval: 3600000, // one hour
 						},
-
 						
 					},
 					series: [ <% Mood.drop_whites(@user.id).each do |name| %>
