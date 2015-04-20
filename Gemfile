@@ -79,6 +79,7 @@ end
 
 # Use unicorn as the app server
 gem 'unicorn'
+gem 'unicorn-worker-killer'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
