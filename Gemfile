@@ -14,7 +14,7 @@ gem 'bcrypt-ruby', '3.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'kramdown', '1.3.3'
-gem 'mathjax-rails', '2.3.0'
+gem 'mathjax-rails', '2.5.1'
 gem 'coderay', '1.1.0'
 gem 'paperclip', '4.1.1'
 gem 'aws-sdk'
@@ -24,6 +24,7 @@ gem 'rack-block-semalt', '~> 1.0.1'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
+	gem 'guard', '2.0.0'
 	gem 'rspec-rails', '2.13.1'
 	gem 'guard-rspec', '2.5.0'
 	gem 'spork-rails', '4.0.0'
